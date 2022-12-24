@@ -29,14 +29,9 @@ void showDataOfAll()
     cout << "文件打开失败" << endl;
     return;
   }
-
-  string data;
-  while (getline(file, data))
-  {
-    printOneTeacher(handleStr(data));
-  }
-
+  printTableOfAll(file);
   file.close();
+  file.clear();
 }
 
 // 显示部分数据(分页查询)
@@ -45,11 +40,11 @@ void showDataOfPart()
   ifstream file = _openFile(DATA_URL);
   if (!file)
   {
-    cout << "文件打开失败哈哈哈";
+    cout << "文件打开失败~";
     return;
   }
   
-  printTable(file);
+  printTableOfPart(file);
   
   file.close();
   file.clear();

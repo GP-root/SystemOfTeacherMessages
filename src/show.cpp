@@ -12,8 +12,7 @@ void showMenu(){
 void print(string str, int length, string loaction, char substitute, bool isBreak)
 {
   /*
-  str:目标字符串
-  length：宽度（字节）
+  str:目标字符串  length：宽度（字节）
   substitute：填充字符
   loaction：目标字符串位置(左/右/中对齐)
   isBreak：是否换行
@@ -95,17 +94,21 @@ void printHeader(string header){
   printl("=",135,"left",'=');
 }
 
-// 打印表格
-void printTable(ifstream &file){
+// 打印部分表格
+void printTableOfPart(ifstream &file, int num){
+  /*
+  file:输入文件流
+  num:展示数据条数,默认40
+  */
   int page = 1;// 页数
   int state = 1;// 状态,[1]:仍有数据;[0]:没有数据;
-  string data;// 教师数据
+  string data;// 教师数据 
   string header;// 表头数据
   getline(file, header);
   while (true)  
   {
     printHeader(header);
-    for(int count = 0; count < 30;count++){
+    for(int count = 0; count < num;count++){
       if(!getline(file, data)){
         state = 0;
         break;
@@ -128,4 +131,17 @@ void printTable(ifstream &file){
       page++;
     }
   }
+}
+
+// 打印全部表格
+void printTableOfAll(ifstream &file){
+  string data;// 教师数据 
+  string header;// 表头数据
+  getline(file, header);
+  printHeader(header);
+  while (getline(file, data))
+  {
+    printOneTeacher(handleStr(data));
+  }
+  printl("=",135,"center",' ');
 }
