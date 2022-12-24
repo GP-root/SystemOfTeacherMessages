@@ -236,3 +236,10 @@ void printOneTeacher(Teacher t){
   print(t.getElement("address"),50,"left",' ',false);
   printl(t.getElement("telephone"),10,"left",' ');
 }
+
+// 打印表头
+void printHeader(string header){
+  printl("教师信息表",135,"left",'=');
+  printOneTeacher(handleStr(header));
+  printl("=",135,"left",'=');
+}
