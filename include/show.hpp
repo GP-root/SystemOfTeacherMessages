@@ -1,6 +1,7 @@
 #ifndef _show_H_
 #define _show_H_
 #include<iostream>
+#include <fstream>
 #include "Teacher.hpp"
 using namespace std;
 
@@ -17,4 +18,6 @@ void printOneTeacher(Teacher t);
 // 打印表头
 void printHeader(string header);
 
+// 打印表格
+void printTable(ifstream &file);
 #endif

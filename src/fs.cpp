@@ -49,43 +49,8 @@ void showDataOfPart()
     return;
   }
   
-  int page = 1;// 页数
-  int state = 1;// 状态,[1]:仍有数据;[0]:没有数据;
-  string data;// 教师数据
-  string header;// 表头数据
-  getline(file, header);
-  while (true)  
-  {
-    printHeader(header);
-    for(int count = 0; count < 30;count++){
-      if(!getline(file, data)){
-        state = 0;
-        break;
-      }
-      printOneTeacher(handleStr(data));
-    }
-    string index = "第" + to_string(page) + "页";
-    printl(index, 135, "center", '=');
-    cout << "[0]:退出浏览;[1]:浏览下一页;请输入:";
-    int a;
-    cin >> a;
-    if (a == 0)
-    {
-      break;
-    }
-    if (state == 0)
-    {
-      printl("已经是最后一页了",135,"center",' ');
-    }else{
-      page++;
-    }
-  }
-
+  printTable(file);
+  
   file.close();
   file.clear();
-}
-
-void test()
-{
-  
 }

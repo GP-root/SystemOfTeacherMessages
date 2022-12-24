@@ -94,6 +94,7 @@ Teacher transformStruct(vector<string> data)
   }
   return t;
 }
+
 // 将字符串转换成数组
 vector<string> transformArray(string message)
 {

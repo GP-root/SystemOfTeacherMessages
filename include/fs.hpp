@@ -10,6 +10,4 @@ void showDataOfAll();
 
 void showDataOfPart();
 
-void test();
-
 #endif
