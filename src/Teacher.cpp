@@ -27,7 +27,7 @@ string Teacher::getElement(string attribute)
   return "获取失败，请检查参数";
 }
 
-void Teacher::setElement(string attribute, string value)
+void Teacher::setValue(string attribute, string value)
 {
   if (attribute == "id")
   {
@@ -74,4 +74,16 @@ void Teacher::setElement(string attribute, string value)
     telephone = value;
     return;
   }
+}
+
+void Teacher::setValueOfAll(string id,string name,string sex,string age,string education,string title,string money,string address,string telephone){
+  setValue("id", id);
+  setValue("name", name);
+  setValue("sex", sex);
+  setValue("age", age);
+  setValue("education", education);
+  setValue("title", title);
+  setValue("money", money);
+  setValue("address", address);
+  setValue("telephone", telephone);
 }

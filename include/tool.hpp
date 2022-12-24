@@ -15,6 +15,6 @@ vector<string> transformArray(string message);
 Teacher handleStr(string message);
 
 // 返回包含中文字符的string字符个数,默认返回全部字符个数
-int getStrLen(string str, string language = " ", int len = 3);
+int getStrLen(string str, string language, int len = 3);
 
 #endif

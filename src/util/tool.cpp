@@ -15,19 +15,19 @@ Teacher transformStruct(vector<string> data)
     string temp = data[i];
     if (i == 0)
     {
-      t.setElement("id", temp);
+      t.setValue("id", temp);
     }
     else if (i == 1)
     {
-      t.setElement("name", temp);
+      t.setValue("name", temp);
     }
     else if (i == 2)
     {
-      t.setElement("sex", temp);
+      t.setValue("sex", temp);
     }
     else if (i == 3)
     {
-      t.setElement("age", temp);
+      t.setValue("age", temp);
     }
     else if (i == 4)
     {
@@ -48,7 +48,7 @@ Teacher transformStruct(vector<string> data)
       {
         edu = "学历";
       }
-      t.setElement("education", edu);
+      t.setValue("education", edu);
     }
     else if (i == 5)
     {
@@ -77,19 +77,19 @@ Teacher transformStruct(vector<string> data)
       {
         title = "职称";
       }
-      t.setElement("title", title);
+      t.setValue("title", title);
     }
     else if (i == 6)
     {
-      t.setElement("money", temp);
+      t.setValue("money", temp);
     }
     else if (i == 7)
     {
-      t.setElement("address", temp);
+      t.setValue("address", temp);
     }
     else if (i == 8)
     {
-      t.setElement("telephone", temp);
+      t.setValue("telephone", temp);
     }
   }
   return t;

@@ -5,12 +5,14 @@
 #include "Teacher.hpp"
 using namespace std;
 
-// 显示菜单
-void showMenu();
+// 打印固定宽度的字符串，不换行
+void print(string str, int length, string loaction = "left", char substitute = ' ');
 
-// 该函数类似于setW(),setfill()的聚合体,用于解决setW()对中文不友好的情况
-void print(string str, int length, string loaction = "left", char substitute = ' ', bool isBreak = false);
+// 打印固定宽度的字符串，换行
 void printl(string str, int length, string loaction = "left", char substitute = ' ');
+
+// 打印输入长度的字符
+void printC(char c, int l, bool isBreak = true);
 
 // 打印一行教师数据
 void printOneTeacher(Teacher t);

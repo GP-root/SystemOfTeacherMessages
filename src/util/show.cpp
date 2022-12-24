@@ -4,12 +4,9 @@
 #include "Teacher.hpp"
 using namespace std;
 
-void showMenu(){
-  
-}
 
 // 该函数类似于setW(),setfill()的聚合体,用于解决setW()对中文不友好的情况
-void print(string str, int length, string loaction, char substitute, bool isBreak)
+void _print(string str, int length, string loaction, char substitute, bool isBreak)
 {
   /*
   str:目标字符串  length：宽度（字节）
@@ -68,22 +65,36 @@ void print(string str, int length, string loaction, char substitute, bool isBrea
   }
 }
 
-void printl(string str, int length, string loaction, char substitute)
-{
-  print(str, length, loaction, substitute, true);
+// 打印固定宽度的字符串，不换行
+void print(string str, int length, string loaction, char substitute){
+   _print(str, length, loaction, substitute, false);
 }
 
+// 打印固定宽度的字符串，换行
+void printl(string str, int length, string loaction, char substitute)
+{
+  _print(str, length, loaction, substitute, true);
+}
+
+// 打印输入长度的字符
+void printC(char c, int l, bool isBreak){
+  if(isBreak){
+    printl("",l,"left",c);
+  }else{
+    print("",l,"left",c);
+  }
+}
 
 // 打印一行教师数据
 void printOneTeacher(Teacher t){
-  print(t.getElement("id"),10,"left",' ',false);
-  print(t.getElement("name"),10,"left",' ',false);
-  print(t.getElement("sex"),10,"left",' ',false);
-  print(t.getElement("age"),10,"left",' ',false);
-  print(t.getElement("education"),10,"left",' ',false);
-  print(t.getElement("title"),15,"left",' ',false);
-  print(t.getElement("money"),10,"left",' ',false);
-  print(t.getElement("address"),50,"left",' ',false);
+  print(t.getElement("id"),10,"left",' ');
+  print(t.getElement("name"),10,"left",' ');
+  print(t.getElement("sex"),10,"left",' ');
+  print(t.getElement("age"),10,"left",' ');
+  print(t.getElement("education"),10,"left",' ');
+  print(t.getElement("title"),15,"left",' ');
+  print(t.getElement("money"),10,"left",' ');
+  print(t.getElement("address"),50,"left",' ');
   printl(t.getElement("telephone"),10,"left",' ');
 }
 
@@ -143,5 +154,5 @@ void printTableOfAll(ifstream &file){
   {
     printOneTeacher(handleStr(data));
   }
-  printl("=",135,"center",' ');
+  printC('=',135,true);
 }

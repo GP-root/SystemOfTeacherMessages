@@ -26,6 +26,13 @@
     "typeinfo": "cpp",
     "string": "cpp",
     "array": "cpp",
-    "iomanip": "cpp"
+    "iomanip": "cpp",
+    "ctime": "cpp",
+    "unordered_map": "cpp",
+    "vector": "cpp",
+    "optional": "cpp",
+    "sstream": "cpp",
+    "tuple": "cpp",
+    "utility": "cpp"
   }
 }
