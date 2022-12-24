@@ -7,7 +7,7 @@
 using namespace std;
 
 // 将数组添加到class属性里面
-Teacher _transformStruct(vector<string> data)
+Teacher transformStruct(vector<string> data)
 {
   Teacher t;
   for (int i = 0; i < data.size(); i++)
@@ -95,7 +95,7 @@ Teacher _transformStruct(vector<string> data)
   return t;
 }
 // 将字符串转换成数组
-vector<string> _transformArray(string message)
+vector<string> transformArray(string message)
 {
   vector<string> result;
   string str;
@@ -125,11 +125,11 @@ vector<string> _transformArray(string message)
 // 将教师信息字符串转换成class
 Teacher handleStr(string message)
 {
-  return _transformStruct(_transformArray(message));
+  return transformStruct(transformArray(message));
 }
 
 // 返回包含中文字符的string字符个数,默认返回全部字符个数
-int _getStrLen(string str, string language = "", int len = 3)
+int getStrLen(string str, string language, int len)
 {
   /*
   len:字符串中文字符的编码格式的大小，默认utf-8格式的3个字节
@@ -155,91 +155,4 @@ int _getStrLen(string str, string language = "", int len = 3)
     return count - zh;
   }
   return count;
-}
-
-// 该函数类似于setW(),setfill()的聚合体,用于解决setW()对中文不友好的情况
-void print(string str, int length, string loaction, char substitute, bool isBreak)
-{
-  /*
-  str:目标字符串
-  length：宽度（字节）
-  substitute：填充字符
-  loaction：目标字符串位置(左/右/中对齐)
-  isBreak：是否换行
-  */
-  int count = _getStrLen(str, "!zh") + _getStrLen(str, "zh") * 2; // count：字符串显示长度（字节）（一个中文字符显示时的长度等于2个字节的字母或数字的长度）
-
-  if (loaction == "center")
-  {
-    int l = (length - count) / 2;
-    for (int i = 0; i < l; i++)
-    {
-      cout << substitute;
-    }
-    cout << str;
-    for (int i = 0; i < length - l; i++)
-    {
-      cout << substitute;
-    }
-    if (isBreak == true)
-    {
-      cout << endl;
-    }
-    return;
-  }
-  if (loaction == "left")
-  {
-    cout << str;
-    for (int i = 0; i < length - count; i++)
-    {
-      cout << substitute;
-    }
-    if (isBreak == true)
-    {
-      cout << endl;
-      return;
-    }
-    return;
-  }
-  if (loaction == "right")
-  {
-    for (int i = 0; i < length - count; i++)
-    {
-      cout << substitute;
-    }
-    cout << str;
-    if (isBreak == true)
-    {
-      cout << endl;
-      return;
-    }
-    cout << endl;
-    return;
-  }
-}
-
-void printl(string str, int length, string loaction, char substitute)
-{
-  print(str, length, loaction, substitute, true);
-}
-
-
-// 打印一行教师数据
-void printOneTeacher(Teacher t){
-  print(t.getElement("id"),10,"left",' ',false);
-  print(t.getElement("name"),10,"left",' ',false);
-  print(t.getElement("sex"),10,"left",' ',false);
-  print(t.getElement("age"),10,"left",' ',false);
-  print(t.getElement("education"),10,"left",' ',false);
-  print(t.getElement("title"),15,"left",' ',false);
-  print(t.getElement("money"),10,"left",' ',false);
-  print(t.getElement("address"),50,"left",' ',false);
-  printl(t.getElement("telephone"),10,"left",' ');
-}
-
-// 打印表头
-void printHeader(string header){
-  printl("教师信息表",135,"left",'=');
-  printOneTeacher(handleStr(header));
-  printl("=",135,"left",'=');
 }

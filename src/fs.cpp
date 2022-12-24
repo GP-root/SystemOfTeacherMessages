@@ -3,10 +3,11 @@
 #include <vector>
 #include <string>
 #include <iomanip>
-#include <stdlib.h>
+
 #include "fs.hpp"
 #include "Teacher.hpp"
 #include "tool.hpp"
+#include "show.hpp"
 
 #define DATA_URL "../res/teachersMessages.txt"
 
@@ -44,7 +45,7 @@ void showDataOfPart()
   ifstream file = _openFile(DATA_URL);
   if (!file)
   {
-    cout << "文件打开失败";
+    cout << "文件打开失败哈哈哈";
     return;
   }
   
@@ -53,7 +54,7 @@ void showDataOfPart()
   string data;// 教师数据
   string header;// 表头数据
   getline(file, header);
-  while (true)
+  while (true)  
   {
     printHeader(header);
     for(int count = 0; count < 30;count++){
@@ -81,8 +82,10 @@ void showDataOfPart()
   }
 
   file.close();
+  file.clear();
 }
 
 void test()
 {
+  
 }

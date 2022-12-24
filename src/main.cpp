@@ -6,6 +6,6 @@ using namespace std;
 int main(){
   showDataOfPart();
 
-  test();
+  // test();
   return 0;
 }
