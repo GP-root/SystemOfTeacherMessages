@@ -1,10 +1,21 @@
 #include <vector>
 #include <string>
 #include <iostream>
-
+#include <fstream>
 #include "Teacher.hpp"
 
 using namespace std;
+
+bool openFile(ifstream &file, string url)
+{
+  file.open(url, ios::in);
+  if (!file.is_open())
+  {
+    cout << "[Error]:Fail opening failure;文件打开失败" << endl;
+    return false;
+  }
+  return true;
+}
 
 // 将数组添加到class属性里面
 Teacher transformStruct(vector<string> data)
@@ -156,4 +167,18 @@ int getStrLen(string str, string language, int len)
     return count - zh;
   }
   return count;
+}
+
+// 验证口令
+bool verifyKey(string key){
+  if(key == "root"){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+// 验证密码
+void verifyPassword(){
+  
 }

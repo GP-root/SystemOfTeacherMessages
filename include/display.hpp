@@ -1,5 +1,5 @@
-#ifndef _show_H_
-#define _show_H_
+#ifndef _display_H_
+#define _display_H_
 #include<iostream>
 #include <fstream>
 #include "Teacher.hpp"
