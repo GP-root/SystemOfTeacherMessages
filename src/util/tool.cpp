@@ -4,6 +4,8 @@
 #include <fstream>
 #include "Teacher.hpp"
 
+#define DATA_URL "../res/teachersMessages.txt"
+
 using namespace std;
 
 bool openFile(ifstream &file, string url)
@@ -18,7 +20,7 @@ bool openFile(ifstream &file, string url)
 }
 
 // 将数组添加到class属性里面
-Teacher transformStruct(vector<string> data)
+Teacher transformClass(vector<string> data)
 {
   Teacher t;
   for (int i = 0; i < data.size(); i++)
@@ -137,7 +139,7 @@ vector<string> transformArray(string message)
 // 将教师信息字符串转换成class
 Teacher handleStr(string message)
 {
-  return transformStruct(transformArray(message));
+  return transformClass(transformArray(message));
 }
 
 // 返回包含中文字符的string字符个数,默认返回全部字符个数
@@ -170,15 +172,83 @@ int getStrLen(string str, string language, int len)
 }
 
 // 验证口令
-bool verifyKey(string key){
-  if(key == "root"){
+bool verifyKey(string key)
+{
+  if (key == "root")
+  {
     return true;
-  }else{
+  }
+  else
+  {
     return false;
   }
 }
 
 // 验证密码
-void verifyPassword(){
-  
+void verifyPassword()
+{
+}
+
+// 搜索指定数据
+vector<Teacher> searchData(ifstream &file, string input, int choice)
+{
+  string data;
+  vector<Teacher> res; // 符合结果
+  while (getline(file, data))
+  {
+    bool isRight = false;
+    vector<string> temp = transformArray(data);
+    string title;
+
+    switch (choice)
+    {
+    case 0:// [0]:编号
+      if (temp[0] == input)
+      {
+        isRight = true;
+      }
+      break;
+    case 1:
+      // [1]:职称;懒把这职称判断抽出来了
+      if (temp[5] == "1")
+      {
+        title = "三级教师";
+      }
+      else if (temp[5] == "2")
+      {
+        title = "二级教师";
+      }
+      else if (temp[5] == "3")
+      {
+        title = "一级教师";
+      }
+      else if (temp[5] == "4")
+      {
+        title = "高级教师";
+      }
+      else if (temp[5] == "5")
+      {
+        title = "正高级教师";
+      }
+      if (title == input)
+      {
+        isRight = true;
+      }
+      break;
+    case 2:// [2]:年龄
+      if (temp[3] == input)
+      {
+        isRight = true;
+      }
+      break;
+    default:
+      break;
+    }
+    if (isRight)
+    {
+      // 数据和输入内容匹配
+      res.push_back(transformClass(temp));
+    }
+  }
+  return res;
 }

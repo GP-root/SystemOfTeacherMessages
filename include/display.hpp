@@ -2,6 +2,7 @@
 #define _display_H_
 #include<iostream>
 #include <fstream>
+#include <vector>
 #include "Teacher.hpp"
 using namespace std;
 
@@ -18,11 +19,14 @@ void printC(char c, int l, bool isBreak = true);
 void printOneTeacher(Teacher t);
 
 // 打印表头
-void printHeader(string header);
+void printHeader();
 
 // 打印部分表格
 void printTableOfPart(ifstream &file, int num = 40);
 
 // 打印全部表格
 void printTableOfAll(ifstream &file);
+
+// 打印搜索结果
+void printSearchData(vector<Teacher> t, string input, int choice);
 #endif

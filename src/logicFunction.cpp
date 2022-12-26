@@ -4,13 +4,14 @@
 #include <string>
 #include <iomanip>
 #include <stdlib.h>
+#include <windows.h>
 
 #include "logicFunction.hpp"
 #include "Teacher.hpp"
 #include "tool.hpp"
 #include "display.hpp"
 
-#define DATA_URL "../res/teachersMessages.txt"
+#define DATA_URL "C:\\Users\\LENOVO\\Desktop\\SystemOfTeacherMessages\\res\\teachersMessages.txt"
 
 using namespace std;
 
@@ -23,6 +24,9 @@ bool showDataOfAll()
 
   printTableOfAll(file);
 
+  cout << "输入[0]退出浏览:";
+  int exit;
+  cin >> exit;
   file.close();
   return true;
 }
@@ -36,7 +40,6 @@ bool showDataOfPart()
 
   printTableOfPart(file);
 
-  file.close();
   return true;
 }
 
@@ -51,6 +54,9 @@ void showMenu(int width)
   cout << '|' << endl;
 
   print("| 2.显示部分教师数据", width - 1, "left", ' ');
+  cout << '|' << endl;
+
+  print("| 3.查询教师数据", width - 1, "left", ' ');
   cout << '|' << endl;
 
   print("| 0.退出系统", width - 1, "left", ' ');
@@ -72,9 +78,6 @@ void showLoginMenu()
   cout << '|' << endl;
 
   print("| 2.账号密码", 29, "left", ' ');
-  cout << '|' << endl;
-
-  print("| 3.注册", 29, "left", ' ');
   cout << '|' << endl;
 
   print("| 0.退出系统", 29, "left", ' ');
@@ -109,7 +112,8 @@ bool login_Key()
       }
       else
       {
-        cout << "退出系统" << endl;
+        cout << "退出系统中···" << endl;
+        Sleep(800);
       }
     }
   } while (errorCount > 0);
@@ -117,6 +121,31 @@ bool login_Key()
 }
 
 // 账号登录
-bool login_account(){
+bool login_account()
+{
+  return true;
+}
+
+// 查询、筛选教师数据
+bool getSearchData()
+{
+  ifstream file;
+  if (!openFile(file, DATA_URL))
+    return false;
+
+  int choice;
+  string input;
+  cout << "[0]:编号;[1]:职称(暂不支持,输入中文会乱码);[2]:年龄;" << endl;
+  cout << "请选择查询方式:";
+  cin >> choice;
+  cout << "请输入查询内容:";
+  cin >> input;
+
+  printSearchData(searchData(file, input, choice), input, choice);
+
+  cout << "输入[0]退出浏览:";
+  int exit;
+  cin >> exit;
+  file.close();
   return true;
 }

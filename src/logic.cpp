@@ -20,10 +20,6 @@ bool login()
   case 2:
     res = login_account();
     break;
-  case 3:
-    break;
-  case 4:
-    break;
   case 0:
     break;
   default:
@@ -32,7 +28,7 @@ bool login()
   if (res)
   {
     cout << "[系统]Loading······" << endl;
-    Sleep(2000);
+    Sleep(500);
   }
   return res;
 }
@@ -52,10 +48,14 @@ void operateSystem()
     {
     case 1:
       if (!showDataOfAll())
-        Sleep(1500);// 留出时间显示报错信息(如文件打开失败)
+        Sleep(1500); // 留出时间显示报错信息(如文件打开失败)
       break;
     case 2:
       if (!showDataOfPart())
+        Sleep(1500);
+      break;
+    case 3:
+      if (!getSearchData())
         Sleep(1500);
       break;
     case 0:

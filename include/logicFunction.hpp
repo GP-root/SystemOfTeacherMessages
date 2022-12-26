@@ -22,4 +22,7 @@ bool login_Key();
 
 // 账号登录
 bool login_account();
+
+// 查询、筛选教师数据
+bool getSearchData();
 #endif

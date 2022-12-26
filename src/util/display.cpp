@@ -105,10 +105,18 @@ void printOneTeacher(Teacher t)
 }
 
 // 打印表头
-void printHeader(string header)
+void printHeader()
 {
   printl("教师信息表", 136, "center", '=');
-  printOneTeacher(handleStr(header));
+  print("编号", 10, "left", ' ');
+  print("姓名", 10, "left", ' ');
+  print("性别", 10, "left", ' ');
+  print("年龄", 10, "left", ' ');
+  print("学历", 10, "left", ' ');
+  print("职称", 15, "left", ' ');
+  print("工资", 10, "left", ' ');
+  print("住址", 50, "left", ' ');
+  printl("电话", 10, "left", ' ');
   printl("=", 136, "left", '=');
 }
 
@@ -122,8 +130,7 @@ void printTableOfPart(ifstream &file, int num)
   int page = 1;  // 页数
   int state = 1; // 状态,[1]:仍有数据;[0]:没有数据;
   string data;   // 教师数据
-  string header; // 表头数据
-  getline(file, header);
+  getline(file, data);
 
   while (true)
   {
@@ -131,7 +138,7 @@ void printTableOfPart(ifstream &file, int num)
     {
       system("cls");
       // 表头
-      printHeader(header);
+      printHeader();
       // 表内容
       for (int count = 0; count < num; count++)
       {
@@ -163,13 +170,49 @@ void printTableOfPart(ifstream &file, int num)
 // 打印全部表格
 void printTableOfAll(ifstream &file)
 {
-  string data;   // 教师数据
-  string header; // 表头数据
-  getline(file, header);
-  printHeader(header);
+  string data; // 教师数据
+  getline(file, data);
+  printHeader();
   while (getline(file, data))
   {
     printOneTeacher(handleStr(data));
   }
   printC('=', 135, true);
+}
+
+// 打印搜索结果
+void printSearchData(vector<Teacher> t, string input, int choice)
+{
+  system("cls");
+  printHeader();
+  if (t.size() == 0)
+  {
+    string f = "???";
+    if (choice == 0)
+    {
+      f = "编号";
+    }
+    else if (choice == 1)
+    {
+      f = "职称";
+    }
+    else if (choice == 2)
+    {
+      f = "年龄";
+    }
+
+cout<<input<<endl;
+    string temp = "未查询到" + f + "为" + input + "的数据";
+    
+    printl(temp, 136, "center", ' ');
+  }
+  else
+  {
+    for (vector<Teacher>::iterator it = t.begin(); it != t.end(); it++)
+    {
+      printOneTeacher(*it);
+    }
+  }
+
+  printC('=', 136, true);
 }

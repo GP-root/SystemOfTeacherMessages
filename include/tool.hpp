@@ -9,7 +9,7 @@ using namespace std;
 bool openFile(ifstream &file, string url);
 
 // 将数组添加到class属性里面
-Teacher transformStruct(vector<string> data);
+Teacher transformClass(vector<string> data);
 
 // 将字符串转换成数组
 vector<string> transformArray(string message);
@@ -25,4 +25,7 @@ bool verifyKey(string key);
 
 // 验证密码
 void verifyPassword();
+
+// 搜索指定数据
+vector<Teacher> searchData(ifstream &file, string input, int choice);
 #endif
