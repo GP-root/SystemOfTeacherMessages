@@ -52,14 +52,15 @@ void operateSystem()
       break;
     case 2:
       if (!showDataOfPart())
-        Sleep(1500);
+        Sleep(1500); 
       break;
     case 3:
       if (!getSearchData())
         Sleep(1500);
       break;
     case 4:
-      update();
+    if (!update())
+        Sleep(1500);
       break;
     case 0:
       exit = true;

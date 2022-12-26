@@ -59,7 +59,7 @@ void showMenu(int width)
   print("| [3] 查询教师数据", width - 1, "left", ' ');
   cout << '|' << endl;
 
-  print("| [4] 修改教师数据", width - 1, "left", ' ');
+  print("| [4] 修改教师数据(未实现)", width - 1, "left", ' ');
   cout << '|' << endl;
 
   print("| [0] 退出系统", width - 1, "left", ' ');
@@ -157,8 +157,13 @@ bool getSearchData()
 bool update()
 {
   ifstream file;
-  if (!openFile(file, DATA_URL))
+  // if (!openFile(file, DATA_URL))
+  //   return false;
+  if (!openFile(file, "C:\\Users\\LENOVO\\Desktop\\SystemOfTeacherMessages\\src\\1.txt"))
     return false;
 
+  
+
   file.close();
+  return true;
 }
