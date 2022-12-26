@@ -25,4 +25,7 @@ bool login_account();
 
 // 查询、筛选教师数据
 bool getSearchData();
+
+// 修改教师数据
+bool update();
 #endif

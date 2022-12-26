@@ -58,6 +58,9 @@ void operateSystem()
       if (!getSearchData())
         Sleep(1500);
       break;
+    case 4:
+      update();
+      break;
     case 0:
       exit = true;
       break;

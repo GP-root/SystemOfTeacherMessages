@@ -50,16 +50,19 @@ void showMenu(int width)
   print("菜单", width - 2, "center", '-');
   cout << '+' << endl;
 
-  print("| 1.显示全体教师数据", width - 1, "left", ' ');
+  print("| [1] 显示全体教师数据", width - 1, "left", ' ');
   cout << '|' << endl;
 
-  print("| 2.显示部分教师数据", width - 1, "left", ' ');
+  print("| [2] 显示部分教师数据", width - 1, "left", ' ');
   cout << '|' << endl;
 
-  print("| 3.查询教师数据", width - 1, "left", ' ');
+  print("| [3] 查询教师数据", width - 1, "left", ' ');
   cout << '|' << endl;
 
-  print("| 0.退出系统", width - 1, "left", ' ');
+  print("| [4] 修改教师数据", width - 1, "left", ' ');
+  cout << '|' << endl;
+
+  print("| [0] 退出系统", width - 1, "left", ' ');
   cout << '|' << endl;
 
   cout << '+';
@@ -74,13 +77,13 @@ void showLoginMenu()
   print("登录选项", 28, "center", '-');
   cout << '+' << endl;
 
-  print("| 1.口令", 29, "left", ' ');
+  print("| [1] 口令", 29, "left", ' ');
   cout << '|' << endl;
 
-  print("| 2.账号密码", 29, "left", ' ');
+  print("| [2] 账号密码", 29, "left", ' ');
   cout << '|' << endl;
 
-  print("| 0.退出系统", 29, "left", ' ');
+  print("| [0] 退出系统", 29, "left", ' ');
   cout << '|' << endl;
 
   cout << '+';
@@ -148,4 +151,14 @@ bool getSearchData()
   cin >> exit;
   file.close();
   return true;
+}
+
+// 修改教师数据
+bool update()
+{
+  ifstream file;
+  if (!openFile(file, DATA_URL))
+    return false;
+
+  file.close();
 }
